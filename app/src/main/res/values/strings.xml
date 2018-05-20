@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Sistema de Registro de Notas</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo">Sistema de Registro de Notas</string>
+    <string name="titulo2">Ciclo 01/2018 - Pregrado</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Actualizar">Actualizar Registro</string>
+    <string name="Modificar">Modificar</string>
+    <string name="Buscar">Buscar Registro</string>
+    <string name="Mostrar">Mostrar Registro</string>
+    <string name="Agregar">Agregar Registro</string>
+</resources>
