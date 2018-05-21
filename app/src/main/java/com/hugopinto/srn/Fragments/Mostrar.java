@@ -4,11 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.hugopinto.srn.Adaptador.PersonaAdaptador;
+import com.hugopinto.srn.DBHelper.DBHelper;
+import com.hugopinto.srn.Datos.Persona;
 import com.hugopinto.srn.R;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +30,12 @@ import com.hugopinto.srn.R;
  */
 public class Mostrar extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
+
+    PersonaAdaptador adapter;
+    ArrayList<Persona> people;
+
+    LinearLayoutManager lManager;
+    RecyclerView rv;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -65,7 +81,39 @@ public class Mostrar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mostrar, container, false);
+
+        View vista= inflater.inflate(R.layout.fragment_mostrar, container, false);
+
+        rv=  vista.findViewById(R.id.recycler);
+
+
+        people= new ArrayList<>();
+
+
+        lManager= new LinearLayoutManager(getActivity());
+
+        rv.setLayoutManager(lManager);
+        people= DBHelper.myDB.fillarray();
+
+        adapter= new PersonaAdaptador(people) {
+            @Override
+            public void onVerClick(View v, int pos) {
+
+            }
+
+            @Override
+            public void Contador(int cont) {
+
+            }
+        };
+
+
+
+        rv.setAdapter(adapter);
+
+
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

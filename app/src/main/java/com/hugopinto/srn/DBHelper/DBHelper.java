@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.hugopinto.srn.Datos.Persona;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME="bd_usuarios";
     public static final String TABLA_USUARIO="Persona";
@@ -88,6 +90,42 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update(TABLA_USUARIO,values,CAMPO_CARNET+"=?",parametros);
         Toast.makeText(context,"Usuario Actualizado con exito",Toast.LENGTH_SHORT).show();
         return true;
+    }
+    public ArrayList<Persona> fillarray(){
+
+        ArrayList<Persona> list = new ArrayList<Persona>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLA_USUARIO;
+
+
+        Cursor info = db.rawQuery(selectQuery, null);
+        try {
+
+            // looping through all rows and adding to list
+            if (info.moveToFirst()) {
+                do {
+                    Persona obj = new Persona();
+                    //only one column
+                    obj.setCarnet(info.getString(0));
+                    obj.setNota(info.getString(1));
+                    obj.setMateria(info.getString(2));
+                    obj.setCatedratico(info.getString(3));
+
+                    list.add(obj);
+                } while (info.moveToNext());
+            }
+
+        } finally {
+            try {
+                info.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+
+
+        return list;
     }
 
     public boolean deleteUser(String carnet){
