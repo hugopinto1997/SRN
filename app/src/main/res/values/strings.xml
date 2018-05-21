@@ -16,4 +16,8 @@
     <string name="Buscar">Buscar Registro</string>
     <string name="Mostrar">Mostrar Registro</string>
     <string name="Agregar">Agregar Registro</string>
+    <string name="carnet">Carnet:</string>
+    <string name="nota">Nota:</string>
+    <string name="materia">Materia:</string>
+    <string name="profe">Lic./Ing.:</string>
 </resources>
