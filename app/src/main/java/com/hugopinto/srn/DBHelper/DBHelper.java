@@ -79,9 +79,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean editUser(Persona p){
         String [] parametros = {p.getCarnet()};
-        String [] campos = {CAMPO_CARNET, CAMPO_NOTA, CAMPO_MATERIA, CAMPO_CATEDRATICO};
+        //String [] campos = {CAMPO_CARNET, CAMPO_NOTA, CAMPO_MATERIA, CAMPO_CATEDRATICO};
         ContentValues values = new ContentValues();
         values.put(CAMPO_CARNET,p.getCarnet());
+        values.put(CAMPO_NOTA,p.getNota());
+        values.put(CAMPO_MATERIA, p.getMateria());
+        values.put(CAMPO_CATEDRATICO, p.getCatedratico());
         db.update(TABLA_USUARIO,values,CAMPO_CARNET+"=?",parametros);
         Toast.makeText(context,"Usuario Actualizado con exito",Toast.LENGTH_SHORT).show();
         return true;

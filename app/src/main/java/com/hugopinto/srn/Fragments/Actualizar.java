@@ -7,7 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.hugopinto.srn.DBHelper.DBHelper;
+import com.hugopinto.srn.Datos.Persona;
 import com.hugopinto.srn.R;
 
 /**
@@ -20,6 +25,10 @@ import com.hugopinto.srn.R;
  */
 public class Actualizar extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
+
+    private EditText identificador, nt, assgnmnt, pfs, sv;
+    private Button bbuscar, bactualizar;
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -65,7 +74,44 @@ public class Actualizar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_actualizar, container, false);
+
+        View v =inflater.inflate(R.layout.fragment_actualizar, container, false);
+
+        identificador = v.findViewById(R.id.jalarcarneta);
+        nt = v.findViewById(R.id.notaa);
+        assgnmnt =v.findViewById(R.id.materiaa);
+        pfs = v.findViewById(R.id.catedraticoa);
+        bbuscar = v.findViewById(R.id.buscarida);
+        bactualizar = v.findViewById(R.id.buttona);
+
+        bbuscar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Persona P = DBHelper.myDB.findUser(identificador.getText().toString());
+                if(P==null){
+                    Toast.makeText(v.getContext(),"El usuario no fue encontrado", Toast.LENGTH_SHORT).show();
+                    nt.setText("");
+                    assgnmnt.setText("");
+                    pfs.setText("");
+                }
+                else{
+                    nt.setText(P.getNota());
+                    assgnmnt.setText(P.getMateria());
+                    pfs.setText(P.getCatedratico());
+                }
+            }
+        });
+        bactualizar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                DBHelper.myDB.editUser(new Persona(identificador.getText().toString(),nt.getText().toString(),assgnmnt.getText().toString(), pfs.getText().toString()));
+            }
+        });
+
+
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
