@@ -26,7 +26,8 @@ import com.hugopinto.srn.R;
 public class Actualizar extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
 
-    private EditText identificador, nt, assgnmnt, pfs, sv;
+    private EditText identificador, nt, sv;
+    private String pfs, assgnmt;
     private Button bbuscar, bactualizar;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,8 +80,6 @@ public class Actualizar extends Fragment {
 
         identificador = v.findViewById(R.id.jalarcarneta);
         nt = v.findViewById(R.id.notaa);
-        assgnmnt =v.findViewById(R.id.materiaa);
-        pfs = v.findViewById(R.id.catedraticoa);
         bbuscar = v.findViewById(R.id.buscarida);
         bactualizar = v.findViewById(R.id.buttona);
 
@@ -88,16 +87,14 @@ public class Actualizar extends Fragment {
             @Override
             public void onClick(View v){
                 Persona P = DBHelper.myDB.findUser(identificador.getText().toString());
+                assgnmt= P.getMateria().toString();
+                pfs = P.getCatedratico().toString();
                 if(P==null){
                     Toast.makeText(v.getContext(),"El usuario no fue encontrado", Toast.LENGTH_SHORT).show();
                     nt.setText("");
-                    assgnmnt.setText("");
-                    pfs.setText("");
                 }
                 else{
                     nt.setText(P.getNota());
-                    assgnmnt.setText(P.getMateria());
-                    pfs.setText(P.getCatedratico());
                 }
             }
         });
@@ -107,7 +104,7 @@ public class Actualizar extends Fragment {
                 if (Float.parseFloat(nt.getText().toString()) > 10) {
                     Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
                 } else {
-                    DBHelper.myDB.editUser(new Persona(identificador.getText().toString(), nt.getText().toString(), assgnmnt.getText().toString(), pfs.getText().toString()));
+                    DBHelper.myDB.editUser(new Persona(identificador.getText().toString(), nt.getText().toString(), assgnmt, pfs));
                 }
             }
         });

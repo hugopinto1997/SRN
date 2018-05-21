@@ -67,26 +67,6 @@
             android:hint="Nota"
             android:textColor="#000000"
             />
-        <EditText
-            android:id="@+id/materiaa"
-            android:layout_marginRight="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Materia"
-            android:textColor="#000000"
-            />
-        <EditText
-            android:id="@+id/catedraticoa"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Catedratico"
-            android:textColor="#000000"
-            />
 
         <Button
             android:id="@+id/buttona"
