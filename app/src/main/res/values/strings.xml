@@ -20,4 +20,5 @@
     <string name="nota">Nota:</string>
     <string name="materia">Materia:</string>
     <string name="profe">Lic./Ing.:</string>
+    <string name="datosdelregistro">Datos del Registro</string>
 </resources>
