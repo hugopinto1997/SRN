@@ -57,7 +57,7 @@
 
 
         <EditText
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:id="@+id/notaa"
             android:layout_marginRight="64dp"
             android:layout_marginLeft="64dp"

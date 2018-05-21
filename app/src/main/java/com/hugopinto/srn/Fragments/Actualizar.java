@@ -104,7 +104,7 @@ public class Actualizar extends Fragment {
         bactualizar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(nt.getText().toString()) > 10) {
+                if (Float.parseFloat(nt.getText().toString()) > 10) {
                     Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
                 } else {
                     DBHelper.myDB.editUser(new Persona(identificador.getText().toString(), nt.getText().toString(), assgnmnt.getText().toString(), pfs.getText().toString()));

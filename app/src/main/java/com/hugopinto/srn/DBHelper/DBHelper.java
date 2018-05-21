@@ -56,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(CAMPO_CATEDRATICO,p.getCatedratico());
 
         db.insert(TABLA_USUARIO,null,values);
-        Toast.makeText(context,"Insertado con exito a: "+"Carnet: "+p.getCarnet()+" Nota: "+p.getNota()+" Materia: "+CAMPO_MATERIA+" Catedratico: "+CAMPO_CATEDRATICO ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,"Insertado con exito",Toast.LENGTH_SHORT).show();
         return true;
     }
     public Persona findUser(String carnet){
