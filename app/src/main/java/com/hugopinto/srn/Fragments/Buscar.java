@@ -7,8 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hugopinto.srn.DBHelper.DBHelper;
+import com.hugopinto.srn.Datos.Persona;
 import com.hugopinto.srn.R;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,9 @@ public class Buscar extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private TextView grade, asignment, professor;
+    private EditText id;
+    private Button search;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +76,39 @@ public class Buscar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buscar, container, false);
+        View v = inflater.inflate(R.layout.fragment_buscar, container, false);
+
+        id = v.findViewById(R.id.jalarcarnet);
+        grade = v.findViewById(R.id.n);
+        asignment = v.findViewById(R.id.m);
+        professor = v.findViewById(R.id.c);
+        search = v.findViewById(R.id.buscarid);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Persona P = DBHelper.myDB.findUser(id.getText().toString());
+                if(P==null){
+                    Toast.makeText(v.getContext(),"El usuario no fue encontrado", Toast.LENGTH_SHORT).show();
+                    grade.setText("NULL");
+                    asignment.setText("NULL");
+                    professor.setText("NULL");
+                }
+                else{
+                    grade.setText(P.getNota());
+                    asignment.setText(P.getMateria());
+                    professor.setText(P.getCatedratico());
+                }
+            }
+        });
+
+
+
+
+
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

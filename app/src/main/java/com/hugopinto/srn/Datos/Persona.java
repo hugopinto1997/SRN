@@ -6,6 +6,22 @@ public class Persona {
     private String materia;
     private String catedratico;
 
+    public Persona(){
+
+    }
+    public Persona(String carnet, String nota) {
+        this.carnet = carnet;
+        this.nota = nota;
+    }
+
+
+    public Persona(String carnet, String nota, String materia, String catedratico) {
+        this.carnet = carnet;
+        this.nota = nota;
+        this.materia = materia;
+        this.catedratico = catedratico;
+    }
+
     public String getCarnet() {
         return carnet;
     }

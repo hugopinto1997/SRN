@@ -5,11 +5,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hugopinto.srn.R;
+import com.hugopinto.srn.Datos.Persona;
+import com.hugopinto.srn.DBHelper.DBHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +30,12 @@ public class Agregar extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private EditText carn, not, mat, cat;
+    private Button btn;
+
+
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -62,11 +74,30 @@ public class Agregar extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agregar, container, false);
+        View v = inflater.inflate(R.layout.fragment_agregar, container, false);
+        DBHelper.getInstance(v.getContext());
+        carn = v.findViewById(R.id.carnet);
+        btn = v.findViewById(R.id.button);
+        mat = v.findViewById(R.id.materia);
+        not = v.findViewById(R.id.nota);
+        cat = v.findViewById(R.id.catedratico);
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                boolean flag = DBHelper.myDB.add(new Persona(carn.getText().toString(),not.getText().toString(), mat.getText().toString(), cat.getText().toString()));
+                if(flag){
+                    Log.d("Edit",not.getText().toString());
+                }
+            }
+        });
+        return v;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,4 +138,6 @@ public class Agregar extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

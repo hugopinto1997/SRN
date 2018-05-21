@@ -20,4 +20,67 @@
             android:textSize="32sp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/carnet"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Carnet"
+            android:textColor="#000000"
+            />
+        <EditText
+            android:inputType="number"
+            android:id="@+id/nota"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nota"
+            android:textColor="#000000"
+            />
+        <EditText
+            android:id="@+id/materia"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Materia"
+            android:textColor="#000000"
+            />
+        <EditText
+            android:id="@+id/catedratico"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Catedratico"
+            android:textColor="#000000"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:background="@drawable/degradado1"
+            android:text="Agregar"/>
+
+
+    </LinearLayout>
+
 </FrameLayout>
