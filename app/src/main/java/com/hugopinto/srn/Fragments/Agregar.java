@@ -90,9 +90,13 @@ public class Agregar extends Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                boolean flag = DBHelper.myDB.add(new Persona(carn.getText().toString(),not.getText().toString(), mat.getText().toString(), cat.getText().toString()));
-                if(flag){
-                    Log.d("Edit",not.getText().toString());
+                if(Integer.parseInt(not.getText().toString())>10){
+                    Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
+                }else {
+                    boolean flag = DBHelper.myDB.add(new Persona(carn.getText().toString(), not.getText().toString(), mat.getText().toString(), cat.getText().toString()));
+                    if (flag) {
+                        Log.d("Edit", not.getText().toString());
+                    }
                 }
             }
         });
