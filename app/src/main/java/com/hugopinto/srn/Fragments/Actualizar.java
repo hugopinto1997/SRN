@@ -101,10 +101,14 @@ public class Actualizar extends Fragment {
         bactualizar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (Float.parseFloat(nt.getText().toString()) > 10) {
-                    Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
+                if (nt.getText().toString().isEmpty()) {
+                    Toast.makeText(v.getContext(), "No se ha buscado ningun dato", Toast.LENGTH_SHORT).show();
                 } else {
-                    DBHelper.myDB.editUser(new Persona(identificador.getText().toString(), nt.getText().toString(), assgnmt, pfs));
+                    if (Float.parseFloat(nt.getText().toString()) > 10) {
+                        Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
+                    } else {
+                        DBHelper.myDB.editUser(new Persona(identificador.getText().toString(), nt.getText().toString(), assgnmt, pfs));
+                    }
                 }
             }
         });

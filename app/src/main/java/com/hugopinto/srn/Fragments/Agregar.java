@@ -89,13 +89,20 @@ public class Agregar extends Fragment {
 
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                if(Float.parseFloat(not.getText().toString())>10){
-                    Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
-                }else {
-                    boolean flag = DBHelper.myDB.add(new Persona(carn.getText().toString(), not.getText().toString(), mat.getText().toString(), cat.getText().toString()));
-                    if (flag) {
-                        Log.d("Edit", not.getText().toString());
+            public void onClick(View v) {
+                if (carn.getText().toString().isEmpty() ||
+                        mat.getText().toString().isEmpty() ||
+                        not.getText().toString().isEmpty() ||
+                        cat.getText().toString().isEmpty()) {
+                    Toast.makeText(v.getContext(), "Llene loc campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (Float.parseFloat(not.getText().toString()) > 10) {
+                        Toast.makeText(v.getContext(), "Nota mayor a 10, ingrese una nota menor o igual a 10", Toast.LENGTH_SHORT).show();
+                    } else {
+                        boolean flag = DBHelper.myDB.add(new Persona(carn.getText().toString(), not.getText().toString(), mat.getText().toString(), cat.getText().toString()));
+                        if (flag) {
+                            Log.d("Edit", not.getText().toString());
+                        }
                     }
                 }
             }
